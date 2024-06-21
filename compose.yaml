@@ -1,0 +1,17 @@
+version: '3.1'
+
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: nomeDoBanco
+      POSTGRES_USER: usuario
+      POSTGRES_PASSWORD: senha
+    ports:
+      - "5432:5432"
+  app:
+    image: fer2ap/fernando-app-planejador-financas-api:latest
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
